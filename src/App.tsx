@@ -1,26 +1,23 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { Navbar } from './components/NavBar';
+import { AboutPage } from './pages/AboutPage';
+import { TodosPage } from './pages/TodosPage';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+// Classic Components - для классов
+// React.FC - FUNCTION COMPONENT в библиотеке Component
+const App: React.FC = () => {
+  return(
+    <BrowserRouter>
+      <Navbar />
+      <div className="container">
+        <Switch>
+          <Route component={TodosPage} path="/" exact />
+          <Route component={AboutPage} path="/about" />
+        </Switch>
+      </div>
+    </BrowserRouter>
+  )
 }
 
 export default App;
